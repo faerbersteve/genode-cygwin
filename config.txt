@@ -1,0 +1,3 @@
+genode_git=git://github.com/faerbersteve/genode.git
+override_sourcedir=0
+tool_chain_arch=x86

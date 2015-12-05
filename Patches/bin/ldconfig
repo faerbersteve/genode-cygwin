@@ -1,0 +1,38 @@
+#!/bin/sh 
+
+command="ldconfig "
+
+if [ -z $1 ]
+then
+	command="$command"
+else
+	command="$command $1"
+fi
+
+
+if [ -z $2 ]
+then
+	command="$command"
+else
+	command="$command $2"
+fi
+
+if [ -z $3 ]
+then
+	command="$command"
+else
+	command="$command $3"
+fi
+
+
+if [ -z $4 ]
+then
+	command="$command"
+else
+	command="$command $4"
+fi
+
+echo -e "$command\r\n" >> "/etc/ldconfig.txt"
+echo -e "$command\n " >> "/etc/ldconfiglinux.txt"
+
+echo "$command"
