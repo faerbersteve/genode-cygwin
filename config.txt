@@ -1,3 +1,4 @@
 genode_git=git://github.com/faerbersteve/genode.git
 override_sourcedir=0
+packagemirror=http://cygwin.mirror.constant.com/
 tool_chain_arch=x86

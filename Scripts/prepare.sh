@@ -7,6 +7,8 @@ echo ""
 
 cd /CygwinPrepare
 
+source /CygwinPrepare/config
+
 if [ ! -f /bin/apt-get ]; then
     echo "apt-get not found!"
 	exit -1
@@ -17,10 +19,16 @@ if [ ! -f /bin/wget ]; then
 	exit -1
 fi
 
+if [ -z "$packagemirror" ]; then
+    echo "Package Mirror missing"
+	exit -1
+fi
+
 case "$(uname)" in
    CYGWIN*) cygwin=1 ;;
    *)       cygwin=0 ;;
 esac
+
 
 echo "Preparing for genode..."
 echo "	Installing required tools"
@@ -63,6 +71,25 @@ apt-get install libexpat-devel
 apt-get install patch
 apt-get install gcc-core
 apt-get install gcc-g++
+
+if [ ! -f /usr/local/bin/mawk ]; then
+	if [ $cygwin -eq 1 ]; then
+		#change mirror for package
+		apt-get mirror ftp://ftp.cygwinports.org/pub/cygwinports
+		apt-get install mawk
+		
+		#change to default
+		apt-get mirror $packagemirror
+	else
+	
+		echo "apt-get mawk nit implemented"
+		exit 0
+	fi
+fi
+
+apt-get install subversion-tools
+apt-get install libxslt
+apt-get install yasm
 
 
 echo ""

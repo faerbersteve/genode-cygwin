@@ -49,3 +49,6 @@ cygwin-setup-x86.exe
 setup.log
 setup.log.full
 bits.log
+cygwin-setup-x86_64.exe
+null
+cygwin_installlog.txt
